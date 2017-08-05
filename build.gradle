@@ -15,7 +15,7 @@ repositories {
 dependencies {
     compile("org.projectlombok:lombok:1.16.16")
     compile("ch.qos.logback:logback-classic:1.2.3")
-    compile("net.java.jinput:jinput:2.0.6")
+    compile("org.rxtx:rxtx:2.1.7")
 
     testCompile("junit:junit:4.12")
     testCompile("org.hamcrest:hamcrest-all:1.3")

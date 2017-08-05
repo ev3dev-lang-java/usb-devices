@@ -2,4 +2,4 @@ Manifest-Version: 1.0
 Implementation-Title: EV3Dev-lang-java / usb-devices
 Implementation-Version: 0.1.0-SNAPSHOT
 Implementation-Vendor: Juan Antonio Breña Moral
-Main-Class: ev3dev.sensors.xbox.XBoxController
+Main-Class: ev3dev.devices.arduino.SerialTest
