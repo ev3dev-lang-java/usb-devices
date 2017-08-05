@@ -11,15 +11,14 @@ import java.util.Enumeration;
 
 
 public class SerialTest implements SerialPortEventListener {
-    SerialPort serialPort;
-        /** The port we're normally going to use. */
-	private static final String PORT_NAMES[] = { 
-			"/dev/tty.usbserial-A9007UX1", // Mac OS X
-                        "/dev/ttyACM0", // Raspberry Pi
-			"/dev/ttyUSB0", // Linux
-			"COM3", // Windows
+
+	SerialPort serialPort;
+
+    private static final String PORT_NAMES[] = {
+			"/dev/ttyACM0"
 	};
-	/**
+
+    /**
 	* A BufferedReader which will be fed by a InputStreamReader 
 	* converting the bytes into characters 
 	* making the displayed results codepage independent
@@ -30,12 +29,13 @@ public class SerialTest implements SerialPortEventListener {
 	/** Milliseconds to block while waiting for port open */
 	private static final int TIME_OUT = 2000;
 	/** Default bits per second for COM port. */
-	private static final int DATA_RATE = 9600;
+	private static final int DATA_RATE = 115200;
 
 	public void initialize() {
-                // the next line is for Raspberry Pi and 
-                // gets us into the while loop and was suggested here was suggested http://www.raspberrypi.org/phpBB3/viewtopic.php?f=81&t=32186
-                System.setProperty("gnu.io.rxtx.SerialPorts", "/dev/ttyACM0");
+
+		// the next line is for Raspberry Pi and
+		// gets us into the while loop and was suggested here was suggested http://www.raspberrypi.org/phpBB3/viewtopic.php?f=81&t=32186
+		System.setProperty("gnu.io.rxtx.SerialPorts", "/dev/ttyACM0");
 
 		CommPortIdentifier portId = null;
 		Enumeration portEnum = CommPortIdentifier.getPortIdentifiers();
