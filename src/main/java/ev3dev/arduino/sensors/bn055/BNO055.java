@@ -104,7 +104,7 @@ public @Slf4j class BNO055 implements SerialSensor, SerialPortEventListener {
 
 				if(sensorResponseParts.length > 0){
 
-					Quaternion quaternion = new Quaternion(
+					Euler euler = new Euler(
 							Float.parseFloat(sensorResponseParts[0]),
 							Float.parseFloat(sensorResponseParts[1]),
 							Float.parseFloat(sensorResponseParts[2])
@@ -130,7 +130,7 @@ public @Slf4j class BNO055 implements SerialSensor, SerialPortEventListener {
 
 					synchronized (this) {
 						final BNO055Response bno055Response = new BNO055Response(
-								quaternion,
+								euler,
 								acceleration,
 								magnetometer,
 								gyroscope

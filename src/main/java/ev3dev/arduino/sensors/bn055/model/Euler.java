@@ -5,7 +5,7 @@ import lombok.Data;
 /**
  * Created by jabrena on 12/8/17.
  */
-public @Data class Quaternion {
+public @Data class Euler {
 
     private final float heading, roll, pitch;
 

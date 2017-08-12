@@ -4,7 +4,8 @@ import ev3dev.actuators.Sound;
 import ev3dev.arduino.sensors.bn055.BNO055;
 import ev3dev.arduino.sensors.bn055.BNO055Listener;
 import ev3dev.arduino.sensors.bn055.model.BNO055Response;
-import ev3dev.arduino.sensors.bn055.model.Quaternion;
+import ev3dev.arduino.sensors.bn055.model.Euler;
+import ev3dev.arduino.sensors.bn055.model.Euler;
 import ev3dev.sensors.Button;
 import lombok.extern.slf4j.Slf4j;
 
@@ -19,16 +20,16 @@ public @Slf4j class BNO055TurnTest2 {
 		log.info("Start reading");
 		for(int x= 0; x<=100; x++){
 
-			final Quaternion quaternion = bno055.getResponse().getQuaternion();
+			final Euler euler = bno055.getResponse().getEuler();
 
 			log.debug("Iteration: {}", x);
-			log.debug("Heading: {}", quaternion.getHeading());
+			log.debug("Heading: {}", euler.getHeading());
 
-			if(quaternion.getHeading() == 0.0f){
+			if(euler.getHeading() == 0.0f){
 				log.debug("Detected 0.0");
 			}
 
-			if(quaternion.getHeading() >= 90.0f){
+			if(euler.getHeading() >= 90.0f){
 				log.debug("Detected 90.00");
 				Sound.getInstance().beep();
 				break;
