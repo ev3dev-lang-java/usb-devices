@@ -21,7 +21,8 @@ import ev3dev.actuators.Sound;
 import ev3dev.arduino.sensors.bn055.BNO055;
 import ev3dev.arduino.sensors.bn055.BNO055Listener;
 import ev3dev.arduino.sensors.bn055.model.BNO055Response;
-import ev3dev.arduino.sensors.bn055.model.Quaternion;
+import ev3dev.arduino.sensors.bn055.model.Euler;
+import ev3dev.arduino.sensors.bn055.model.Euler;
 import ev3dev.sensors.Battery;
 import ev3dev.sensors.Button;
 import lombok.extern.slf4j.Slf4j;
@@ -41,14 +42,14 @@ public @Slf4j class BNO055TurnTest {
 			@Override
 			public void dataReceived(final BNO055Response response) {
 
-				if(response.getQuaternion() != null){
+				if(response.getEuler() != null){
 
-					final Quaternion quaternion = response.getQuaternion();
+					final Euler euler = response.getEuler();
 
-					log.debug("Heading: {}", quaternion.getHeading());
+					log.debug("Heading: {}", euler.getHeading());
 
-					if( (quaternion.getHeading() > 90.0f) &&
-						(quaternion.getHeading() <= 100.00f)) {
+					if( (euler.getHeading() > 90.0f) &&
+						(euler.getHeading() <= 100.00f)) {
 
 						//Sound.getInstance().beep();
 						log.info("REACHED");
