@@ -8,5 +8,5 @@ import lombok.Data;
 public @Data class Quaternion {
 
     private final float heading, roll, pitch;
-    
+
 }
