@@ -35,7 +35,7 @@ void loop()
   {
     lastStreamTime = millis();    
 
-    //Quaternion
+    //Euler
     
     //Serial.print(" H: ");
     Serial.print(mySensor.readEulerHeading());
