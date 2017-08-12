@@ -23,10 +23,6 @@ void loop()
 {
   if (updateSensorData)  //Keep the updating of data as a separate task
   {
-    mySensor.updateAccel();        //Update the Accelerometer data
-    mySensor.updateLinearAccel();  //Update the Linear Acceleration data
-    mySensor.updateGravAccel();    //Update the Gravity Acceleration data
-
     mySensor.updateEuler();
     mySensor.updateLinearAccel();
     mySensor.updateMag();
