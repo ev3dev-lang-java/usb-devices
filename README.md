@@ -7,11 +7,11 @@ A java libraries to manage USB devices like Controllers, Arduinos, IMUs, GPS, et
 
 #### Arduino 9 axes motion shield (BNO055)
 
-![](https://raw.githubusercontent.com/ev3dev-lang-java/usb-devices/develop/docs/images/Arduino-9-Axes-Motion-Shield.jpg)
-
 http://www.arduino.org/products/shields/arduino-9-axes-motion-shield
 
-Example using:
+![](https://raw.githubusercontent.com/ev3dev-lang-java/usb-devices/develop/docs/images/Arduino-9-Axes-Motion-Shield.jpg)
+
+Example using the Arduino + Shield:
 
 ``` java
 
@@ -68,6 +68,6 @@ public @Slf4j class BNO055TurnTest {
 
 ```
 
-Video:
+**Video:**
 
 https://www.youtube.com/watch?v=OY2B7B0Qi2Y
