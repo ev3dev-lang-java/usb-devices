@@ -150,7 +150,6 @@ public @Slf4j class BNO055 implements SerialSensor, SerialPortEventListener {
 				log.error(e.getLocalizedMessage());
 			}
 		}
-		// Ignore all the other eventTypes, but you should consider the other ones.
 	}
 
 	public synchronized BNO055Response getResponse(){
