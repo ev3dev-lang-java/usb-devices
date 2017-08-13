@@ -1,7 +1,6 @@
 package examples;
 
 import ev3dev.sensors.arduino.bn055.BNO055;
-
 import lombok.extern.slf4j.Slf4j;
 
 public @Slf4j class BNO055Test {

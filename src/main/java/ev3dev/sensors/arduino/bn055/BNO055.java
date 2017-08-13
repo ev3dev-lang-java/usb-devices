@@ -1,17 +1,15 @@
 package ev3dev.sensors.arduino.bn055;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-
 import ev3dev.sensors.arduino.bn055.model.*;
 import gnu.io.CommPortIdentifier;
 import gnu.io.SerialPort;
-import gnu.io.SerialPortEvent; 
+import gnu.io.SerialPortEvent;
 import gnu.io.SerialPortEventListener;
-
 import lombok.extern.slf4j.Slf4j;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Enumeration;

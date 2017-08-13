@@ -1,11 +1,11 @@
 package examples;
 
+import ev3dev.sensors.Battery;
+import ev3dev.sensors.Button;
 import ev3dev.sensors.arduino.bn055.BNO055;
 import ev3dev.sensors.arduino.bn055.BNO055Listener;
 import ev3dev.sensors.arduino.bn055.model.BNO055Response;
 import ev3dev.sensors.arduino.bn055.model.Euler;
-import ev3dev.sensors.Battery;
-import ev3dev.sensors.Button;
 import lombok.extern.slf4j.Slf4j;
 
 public @Slf4j class BNO055TurnTest {
