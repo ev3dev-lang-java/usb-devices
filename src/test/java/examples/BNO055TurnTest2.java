@@ -1,12 +1,8 @@
 package examples;
 
 import ev3dev.actuators.Sound;
-import ev3dev.arduino.sensors.bn055.BNO055;
-import ev3dev.arduino.sensors.bn055.BNO055Listener;
-import ev3dev.arduino.sensors.bn055.model.BNO055Response;
-import ev3dev.arduino.sensors.bn055.model.Euler;
-import ev3dev.arduino.sensors.bn055.model.Euler;
-import ev3dev.sensors.Button;
+import ev3dev.sensors.arduino.bn055.BNO055;
+import ev3dev.sensors.arduino.bn055.model.Euler;
 import lombok.extern.slf4j.Slf4j;
 
 public @Slf4j class BNO055TurnTest2 {

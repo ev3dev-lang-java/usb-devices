@@ -1,4 +1,4 @@
-package ev3dev.arduino.sensors.bn055;
+package ev3dev.sensors.arduino.bn055;
 
 /**
  * Created by jabrena on 12/8/17.

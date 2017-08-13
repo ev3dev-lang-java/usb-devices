@@ -1,4 +1,4 @@
-package ev3dev.arduino.sensors.bn055.model;
+package ev3dev.sensors.arduino.bn055.model;
 
 import lombok.Data;
 

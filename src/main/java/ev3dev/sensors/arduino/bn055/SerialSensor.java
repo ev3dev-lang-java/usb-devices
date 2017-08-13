@@ -1,4 +1,4 @@
-package ev3dev.arduino.sensors.bn055;
+package ev3dev.sensors.arduino.bn055;
 
 public interface SerialSensor {
 
