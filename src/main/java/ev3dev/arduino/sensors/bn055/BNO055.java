@@ -37,10 +37,17 @@ public @Slf4j class BNO055 implements SerialSensor, SerialPortEventListener {
 
 	private BNO055Response response;
 
+	private void setPortProperty(){
+		final String ports = System.getProperty("gnu.io.rxtx.SerialPorts");
+		final String newPorts = ((ports == null) ? "" : (ports + ":")) + this.USBPort;
+		System.setProperty("gnu.io.rxtx.SerialPorts", newPorts);
+	}
+
 	@Override
 	public void init() throws BNO055ServiceException {
 
-		System.setProperty("gnu.io.rxtx.SerialPorts", this.USBPort);
+		//System.setProperty("gnu.io.rxtx.SerialPorts", this.USBPort);
+		this.setPortProperty();
 
 		CommPortIdentifier portId = null;
 		Enumeration portEnum = CommPortIdentifier.getPortIdentifiers();
@@ -69,6 +76,9 @@ public @Slf4j class BNO055 implements SerialSensor, SerialPortEventListener {
 					SerialPort.STOPBITS_1,
 					SerialPort.PARITY_NONE);
 
+			//TODO: Review??
+			//serialPort.setFlowControlMode(SerialPort.FLOWCONTROL_NONE);
+
 			// open the streams
 			input = new BufferedReader(new InputStreamReader(serialPort.getInputStream()));
 			output = serialPort.getOutputStream();
@@ -96,6 +106,7 @@ public @Slf4j class BNO055 implements SerialSensor, SerialPortEventListener {
 	/**
 	 * Handle an event on the serial port. Read the data and print it.
 	 */
+	@Override
 	public synchronized void serialEvent(SerialPortEvent oEvent) {
 		if (oEvent.getEventType() == SerialPortEvent.DATA_AVAILABLE) {
 			try {
