@@ -1,12 +1,4 @@
 
-remotes {
-    ev3dev {
-        host = '192.168.1.206'
-        user = 'robot'
-        password = 'maker'
-    }
-}
-
 task deploy << {
     ssh.run {
         session(remotes.ev3dev) {
@@ -29,3 +21,5 @@ task deployAndRun << {
 
 }
 deployAndRun.dependsOn deploy, remoteRun
+
+apply from: 'config.gradle'
