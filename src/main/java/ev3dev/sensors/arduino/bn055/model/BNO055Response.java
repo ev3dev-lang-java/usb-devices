@@ -7,6 +7,7 @@ import lombok.Data;
  */
 public @Data class BNO055Response {
 
+    private final Quaternion quaternion;
     private final Euler euler;
     private final Acceleration acceleration;
     private final Magnetometer magnetometer;

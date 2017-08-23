@@ -113,32 +113,40 @@ public @Slf4j class BNO055 implements SerialSensor, SerialPortEventListener {
 
 				if(sensorResponseParts.length > 0){
 
-					Euler euler = new Euler(
+					Quaternion quaternion = new Quaternion(
 							Float.parseFloat(sensorResponseParts[0]),
 							Float.parseFloat(sensorResponseParts[1]),
-							Float.parseFloat(sensorResponseParts[2])
+							Float.parseFloat(sensorResponseParts[2]),
+							Float.parseFloat(sensorResponseParts[3])
+					);
+
+					Euler euler = new Euler(
+							Float.parseFloat(sensorResponseParts[4]),
+							Float.parseFloat(sensorResponseParts[5]),
+							Float.parseFloat(sensorResponseParts[6])
 					);
 
 					Acceleration acceleration = new Acceleration(
-							Float.parseFloat(sensorResponseParts[3]),
-							Float.parseFloat(sensorResponseParts[4]),
-							Float.parseFloat(sensorResponseParts[5])
+							Float.parseFloat(sensorResponseParts[7]),
+							Float.parseFloat(sensorResponseParts[8]),
+							Float.parseFloat(sensorResponseParts[9])
 					);
 
 					Magnetometer magnetometer = new Magnetometer(
-							Float.parseFloat(sensorResponseParts[6]),
-							Float.parseFloat(sensorResponseParts[7]),
-							Float.parseFloat(sensorResponseParts[8])
+							Float.parseFloat(sensorResponseParts[10]),
+							Float.parseFloat(sensorResponseParts[11]),
+							Float.parseFloat(sensorResponseParts[12])
 					);
 
 					Gyroscope gyroscope = new Gyroscope(
-							Float.parseFloat(sensorResponseParts[9]),
-							Float.parseFloat(sensorResponseParts[10]),
-							Float.parseFloat(sensorResponseParts[11])
+							Float.parseFloat(sensorResponseParts[13]),
+							Float.parseFloat(sensorResponseParts[14]),
+							Float.parseFloat(sensorResponseParts[15])
 					);
 
 					synchronized (this) {
 						final BNO055Response bno055Response = new BNO055Response(
+								quaternion,
 								euler,
 								acceleration,
 								magnetometer,

@@ -23,6 +23,7 @@ void loop()
 {
   if (updateSensorData)  //Keep the updating of data as a separate task
   {
+    mySensor.updateQuat();
     mySensor.updateEuler();
     mySensor.updateLinearAccel();
     mySensor.updateMag();
@@ -34,6 +35,24 @@ void loop()
   if ((millis() - lastStreamTime) >= streamPeriod)
   {
     lastStreamTime = millis();    
+
+    //Quaternion
+
+    //Serial.print(" W: ");
+    Serial.print(mySensor.readQuatW());
+    Serial.print(", ");
+
+    //Serial.print(" X: ");
+    Serial.print(mySensor.readQuatX());
+    Serial.print(", ");
+
+    //Serial.print(" Y: ");
+    Serial.print(mySensor.readQuatY());
+    Serial.print(", ");
+
+    //Serial.print(" Z: ");
+    Serial.print(mySensor.readQuatZ());
+    Serial.print(", ");
 
     //Euler
     
