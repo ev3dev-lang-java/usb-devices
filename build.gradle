@@ -1,7 +1,7 @@
 //Gradle file library ev3dev-lang-java / usb-devices
 //Author: Juan Antonio Breña Moral
 
-version = '0.1.0-SNAPSHOT'
+version = '0.1.3-SNAPSHOT'
 
 apply plugin: 'java'
 apply plugin: 'eclipse'
@@ -19,7 +19,7 @@ dependencies {
 
     testCompile("ch.qos.logback:logback-classic:1.2.3")
 
-    testCompile("com.github.ev3dev-lang-java:ev3dev-lang-java:0.7.1-SNAPSHOT")
+    testCompile("com.github.ev3dev-lang-java:ev3dev-lang-java:0.7.0")
 
     testCompile("junit:junit:4.12")
     testCompile("org.hamcrest:hamcrest-all:1.3")
