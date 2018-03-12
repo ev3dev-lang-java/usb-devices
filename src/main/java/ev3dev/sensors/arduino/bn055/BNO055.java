@@ -1,5 +1,6 @@
 package ev3dev.sensors.arduino.bn055;
 
+import ev3dev.sensors.SerialServiceException;
 import ev3dev.sensors.arduino.bn055.model.*;
 import gnu.io.CommPortIdentifier;
 import gnu.io.SerialPort;
@@ -15,8 +16,7 @@ import java.util.Collections;
 import java.util.Enumeration;
 import java.util.List;
 
-
-public @Slf4j class BNO055 implements SerialSensor, SerialPortEventListener {
+public @Slf4j class BNO055 implements BNO055EventSensor, SerialPortEventListener {
 
 	private BufferedReader input;
 	private OutputStream output;
@@ -42,7 +42,7 @@ public @Slf4j class BNO055 implements SerialSensor, SerialPortEventListener {
 	}
 
 	@Override
-	public void init() throws BNO055ServiceException {
+	public void init() throws SerialServiceException {
 
 		//System.setProperty("gnu.io.rxtx.SerialPorts", this.USBPort);
 		this.setPortProperty();
@@ -61,7 +61,7 @@ public @Slf4j class BNO055 implements SerialSensor, SerialPortEventListener {
 
 		if (portId == null) {
 			log.error("Could not find port.");
-			throw new BNO055ServiceException("Could not find port.");
+			throw new SerialServiceException("Could not find port.");
 		}
 
 		try {
@@ -86,7 +86,7 @@ public @Slf4j class BNO055 implements SerialSensor, SerialPortEventListener {
 			serialPort.notifyOnDataAvailable(true);
 		} catch (Exception e) {
 			log.error(e.getLocalizedMessage());
-			throw new BNO055ServiceException(e);
+			throw new SerialServiceException(e);
 		}
 	}
 
