@@ -127,12 +127,13 @@ public @Slf4j class GenericGPS implements SerialSensor, SerialPortEventListener 
 	 */
 	@Override
 	public synchronized void serialEvent(SerialPortEvent oEvent) {
-		if (oEvent.getEventType() == SerialPortEvent.DATA_AVAILABLE) {
-			try {
-				final String inputLine=input.readLine();
 
-				String s = inputLine;
-				System.out.println("Sentence: " + s);
+		if (oEvent.getEventType() == SerialPortEvent.DATA_AVAILABLE) {
+
+			try {
+				final String s = input.readLine();
+
+				log.trace("Sentence: {}", s);
 
 				// Check if sentence is valid:
 				if (!s.startsWith("$"))
@@ -153,23 +154,17 @@ public @Slf4j class GenericGPS implements SerialSensor, SerialPortEventListener 
 						return;
 
 					s = s.substring(0, p);
-					int comma = s.indexOf(',');
-					String token = s.substring(0,comma);
-
-					//System.out.println("Token: " + token);
+					final int comma = s.indexOf(',');
+					final String token = s.substring(0,comma);
 
 					sentenceChooser(token, s);
 
-					//System.out.println(s);
-
 				} catch(NoSuchElementException e) {
-					//System.out.println("GPS: NoSuchElementException");
+					log.error(e.getLocalizedMessage());
 				} catch(StringIndexOutOfBoundsException e) {
-					//System.out.println("GPS: StringIndexOutOfBoundsException");
+					log.error(e.getLocalizedMessage());
 				} catch(ArrayIndexOutOfBoundsException e) {
-					//System.out.println("GPS: ArrayIndexOutOfBoundsException");
-				} catch(Exception e) {
-					//System.out.println("GPS: Exception");
+					log.error(e.getLocalizedMessage());
 				}
 
 			} catch (Exception e) {

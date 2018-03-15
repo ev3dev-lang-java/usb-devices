@@ -17,6 +17,11 @@ public class GenericGPSTest {
 
 		gps.close();
 		log.info("Closing connection with the USB GPS Device");
+
+		log.info("LAT: {} {}, LAT: {}, ALT: {}", gps.getLatitude(), gps.getLatitudeDirection(), gps.getLongitude(), gps.getLongitudeDirection(), gps.getAltitude());
+		log.info("DATE: {}, TIMESTAMP: {}", gps.getDate(), gps.getTimeStamp());
+		log.info("NSTAT: {}", gps.getSatellitesTracked());
+
 	}
 
 	private static void timeCounter(final int seconds) throws InterruptedException {
