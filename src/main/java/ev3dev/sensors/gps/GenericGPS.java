@@ -131,7 +131,7 @@ public @Slf4j class GenericGPS implements SerialSensor, SerialPortEventListener 
 		if (oEvent.getEventType() == SerialPortEvent.DATA_AVAILABLE) {
 
 			try {
-				final String s = input.readLine();
+				String s = input.readLine();
 
 				log.trace("Sentence: {}", s);
 
