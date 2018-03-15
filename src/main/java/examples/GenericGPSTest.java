@@ -26,7 +26,7 @@ public class GenericGPSTest {
 
 	private static void timeCounter(final int seconds) throws InterruptedException {
 		log.info("Start reading");
-		for(int x= 0; x<=seconds; x++){
+		for(int x = 0; x <= seconds; x++){
 			log.info("Iteration: {} \n\n", x);
 			Thread.sleep(1000);
 		}
