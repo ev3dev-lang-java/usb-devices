@@ -1,7 +1,9 @@
 package ev3dev.sensors.microphone;
 
 import java.util.concurrent.atomic.AtomicInteger;
-import static java.lang.Float.*;
+
+import static java.lang.Float.floatToIntBits;
+import static java.lang.Float.intBitsToFloat;
 
 //From Stack overflow question:
 //https://stackoverflow.com/questions/5505460/java-is-there-no-atomicfloat-or-atomicdouble

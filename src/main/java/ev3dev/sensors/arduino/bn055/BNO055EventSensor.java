@@ -1,9 +1,8 @@
 package ev3dev.sensors.arduino.bn055;
 
-public interface SerialSensor {
+import ev3dev.sensors.SerialSensor;
 
-    void init() throws BNO055ServiceException;
-    void close();
+public interface BNO055EventSensor extends SerialSensor {
 
     void addListener(BNO055Listener listener);
     void removeListener(BNO055Listener listener);

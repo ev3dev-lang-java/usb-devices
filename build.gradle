@@ -13,13 +13,15 @@ repositories {
 }
 
 dependencies {
-    compile("org.projectlombok:lombok:1.16.18")
+    compile("org.projectlombok:lombok:1.16.20")
     compile("org.slf4j:slf4j-api:1.7.25")
     compile("org.rxtx:rxtx:2.1.7")
+    compile("com.github.ev3dev-lang-java:lejos-commons:0.7.0")
 
-    testCompile("ch.qos.logback:logback-classic:1.2.3")
+    //Test Dependencies
+    compile("ch.qos.logback:logback-classic:1.2.3")
 
-    testCompile("com.github.ev3dev-lang-java:ev3dev-lang-java:0.7.0")
+    compile("com.github.ev3dev-lang-java:ev3dev-lang-java:0.7.0")
 
     testCompile("junit:junit:4.12")
     testCompile("org.hamcrest:hamcrest-all:1.3")
