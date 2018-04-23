@@ -14,7 +14,7 @@ repositories {
 
 dependencies {
     annotationProcessor("org.projectlombok:lombok:1.16.20")
-    compileOnly("org.projectlombok:lombok:1.16.20")
+    compile("org.projectlombok:lombok:1.16.20")
 
     compile("org.slf4j:slf4j-api:1.7.25")
     compile("org.rxtx:rxtx:2.1.7")

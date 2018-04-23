@@ -12,9 +12,10 @@ import lombok.extern.slf4j.Slf4j;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.Enumeration;
 import java.util.NoSuchElementException;
+import java.util.Objects;
 
 
 public @Slf4j class GenericGPS implements SerialSensor, SerialPortEventListener {
@@ -40,9 +41,8 @@ public @Slf4j class GenericGPS implements SerialSensor, SerialPortEventListener 
 	// this class only remembers the last one
 	private GSVSentence gsvSentence;
 
-	//TODO: Replace by LocalDate
 	//Date Object with use GGA & RMC Sentence
-	private Date date;
+	private LocalDateTime date;
 
 	public GenericGPS(final String USBPort){
 		this.USBPort = USBPort;
@@ -52,8 +52,6 @@ public @Slf4j class GenericGPS implements SerialSensor, SerialPortEventListener 
 		gsaSentence = new GSASentence();
 		rmcSentence = new RMCSentence();
 		gsvSentence = new GSVSentence();
-
-		date = new Date();
 	}
 
 	private void setPortProperty(){
@@ -160,15 +158,15 @@ public @Slf4j class GenericGPS implements SerialSensor, SerialPortEventListener 
 					sentenceChooser(token, s);
 
 				} catch(NoSuchElementException e) {
-					log.error(e.getLocalizedMessage());
+					log.error(e.getLocalizedMessage(), e);
 				} catch(StringIndexOutOfBoundsException e) {
-					log.error(e.getLocalizedMessage());
+					log.error(e.getLocalizedMessage(), e);
 				} catch(ArrayIndexOutOfBoundsException e) {
-					log.error(e.getLocalizedMessage());
+					log.error(e.getLocalizedMessage(), e);
 				}
 
 			} catch (Exception e) {
-				log.error(e.getLocalizedMessage());
+				log.error(e.getLocalizedMessage(), e);
 			}
 		}
 	}
@@ -177,6 +175,7 @@ public @Slf4j class GenericGPS implements SerialSensor, SerialPortEventListener 
 	 * Internal helper method to aid in the subclass architecture. Overwritten by subclass.
 	 * @param header
 	 * @param s
+	 *
 	 */
 	protected void sentenceChooser(String header, String s) {
 		if (header.equals(GGASentence.HEADER)){
@@ -184,7 +183,11 @@ public @Slf4j class GenericGPS implements SerialSensor, SerialPortEventListener 
 		}else if (header.equals(VTGSentence.HEADER)){
 			this.vtgSentence.parse(s);
 		}else if (header.equals(GSASentence.HEADER)){
-			gsaSentence.parse(s);
+			this.gsaSentence.parse(s);
+		}else if (header.equals(RMCSentence.HEADER)){
+			this.rmcSentence.parse(s);
+		}else if (header.equals(GSVSentence.HEADER)){
+			this.gsvSentence.parse(s);
 		}
 	}
 
@@ -380,7 +383,7 @@ public @Slf4j class GenericGPS implements SerialSensor, SerialPortEventListener 
 	 *
 	 * @return the date
 	 */
-	public Date getDate(){
+	public LocalDateTime getDate(){
 		// TODO: Would be more proper to return a new Date object instead of recycled Date.
 		updateDate();
 		updateTime();
@@ -394,14 +397,20 @@ public @Slf4j class GenericGPS implements SerialSensor, SerialPortEventListener 
 
 		int timeStamp = ggaSentence.getTime();
 
-		if(timeStamp >0) {
+		if (timeStamp > 0) {
 			int hh = timeStamp / 10000;
 			int mm = (timeStamp / 100) % 100;
 			int ss = timeStamp % 100;
 
-			date.setHours(hh);
-			date.setMinutes(mm);
-			date.setSeconds(ss);
+			if(Objects.nonNull(date)) {
+				date = LocalDateTime.of(
+						date.getYear(),
+						date.getMonthValue(),
+						date.getDayOfMonth(),
+						hh,
+						mm,
+						ss);
+			}
 		}
 	}
 
@@ -416,9 +425,7 @@ public @Slf4j class GenericGPS implements SerialSensor, SerialPortEventListener 
 			int mm = (dateStamp / 100) % 100;
 			int yy = dateStamp % 100;
 
-			date.setDate(dd);
-			date.setMonth(mm);
-			date.setYear(yy);
+			date = LocalDateTime.of(2000 + yy, mm, dd, 0, 0, 0);
 		}
 	}
 
