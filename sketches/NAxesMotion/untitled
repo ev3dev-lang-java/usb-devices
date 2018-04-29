@@ -1,0 +1,3 @@
+
+-Djava.util.logging.config.file=/Users/jabrena/Documents/DATA/2015/RESEARCH/robotics/ev3dev/java/examples/rosjava-helloworld/src/main/resources/commons-logging.properties
+

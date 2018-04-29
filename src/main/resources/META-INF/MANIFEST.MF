@@ -1,0 +1,4 @@
+Manifest-Version: 1.0
+Implementation-Title: EV3Dev-lang-java / usb-devices
+Implementation-Version: 0.2.0-SNAPSHOT
+Implementation-Vendor: Juan Antonio Breña Moral
